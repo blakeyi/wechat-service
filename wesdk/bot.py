@@ -119,6 +119,7 @@ class Bot(threading.Thread):
         self.wshd_noimplement(j)
     # wshd_personal_info 登陆账号的信息
     def wshd_personal_info(self, j):
+        print("wshd_personal_info", j)
         self.name = j['content']['wx_name']
         self.wxid = j['content']['wx_id']
         if 'personal_info' in self.handle_register:
