@@ -7,6 +7,8 @@ def on_msg(msg):
     logging(msg)
     ans = getXunFeiAnswer(str(msg["content"]).replace("@masteryi", ""))
     if msg["roomid"]:
+        nickname = bot.get_chatroom_member_nick(msg["roomid"], msg['senderid'])
+        print("nickname", nickname)
         bot.send_msg(ans, msg['senderid'], msg["roomid"], "总想")
     else:
         bot.send_msg(ans, msg['wxid'])
