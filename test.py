@@ -6,7 +6,10 @@ from bigmodel.baidu.ERNIE import getAnswer as getBaiduAnswer
 def on_msg(msg):
     logging(msg)
     ans = getXunFeiAnswer(str(msg["content"]))
-    bot.send_msg(ans, msg['wxid'])
+    if msg["roomid"]:
+        bot.send_msg(ans, msg['senderid'], msg["roomid"])
+    else:
+        bot.send_msg(ans, msg['wxid'])
 
 bot = Bot(ip='127.0.0.1', port=5555)
 bot.register("on_open", lambda ws: logging("hi"))
