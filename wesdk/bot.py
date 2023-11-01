@@ -107,7 +107,7 @@ class Bot(threading.Thread):
         res = self.send_http(uri, query.get_chatroom_member_nick(roomid, wxid))
         nick = ""
         if "content" in res:
-            if "nick" in res["content"]
+            if "nick" in res["content"]:
                 nick = res["content"]["nick"]
         return nick
 
