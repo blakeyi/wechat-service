@@ -7,7 +7,7 @@ def on_msg(msg):
     logging(msg)
     ans = getXunFeiAnswer(str(msg["content"]))
     if msg["roomid"]:
-        bot.send_msg(ans, msg['senderid'], msg["roomid"])
+        bot.send_msg(ans, msg['senderid'], msg["roomid"], "总想")
     else:
         bot.send_msg(ans, msg['wxid'])
 
