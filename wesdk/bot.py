@@ -194,7 +194,6 @@ class Bot(threading.Thread):
         self.wshd_recv_txt_msg(msg)
     # wshd_recv_txt_msg 文字消息
     def wshd_recv_txt_msg(self, msg):
-        print("wshd_recv_txt_msg", msg)
         if '@chatroom' in msg['wxid']:
             msg['roomid'] = msg['wxid'] #群id
             msg['senderid'] = msg['id1'] #个人id
@@ -208,10 +207,8 @@ class Bot(threading.Thread):
             msg['content'] = at_match.groups()[1]
             msg['at_bot'] = msg['at_nickname'] == self.name
         # msg['nickname'] = self.get_chatroom_member_nick(msg['roomid'], msg['senderid'])['content']['nick']
-        print("wshd_recv_txt_msg1", msg)
         if 'recv_txt_msg' in self.handle_register:
             try:
-                print("wshd_recv_txt_msg2", msg)
                 self.handle_register['recv_txt_msg'](msg)
             except:
                 import traceback
@@ -267,7 +264,7 @@ class Bot(threading.Thread):
         return on_close
     def make_on_message(self):
         def on_message(ws, message):
-            # print("on_message1", message)
+            print("on_message", message)
             j=json.loads(message)
             if 'content' in j and isinstance(j['content'], str):
                 try:
