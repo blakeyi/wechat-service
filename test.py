@@ -5,7 +5,7 @@ from bigmodel.baidu.ERNIE import getAnswer as getBaiduAnswer
 # connect to hook service
 def on_msg(msg):
     logging(msg)
-    ans = getXunFeiAnswer(msg["content"])
+    ans = getXunFeiAnswer(str(msg["content"]))
     bot.send_msg(ans, msg['wxid'])
 
 bot = Bot(ip='127.0.0.1', port=5555)
