@@ -275,7 +275,7 @@ class Bot(threading.Thread):
             resp_type=j['type']
             action={
                 query.PERSONAL_DETAIL:self.wshd_personal_detail,
-                query.PERSONAL_INFO:self.wshd_personal_info,
+                # query.PERSONAL_INFO:self.wshd_personal_info,
                 query.CHATROOM_MEMBER_NICK:self.wshd_chatroom_member_nick,
                 query.AT_MSG:self.wshd_at_msg,
                 query.DEBUG_SWITCH:self.wshd_debug_switch,
