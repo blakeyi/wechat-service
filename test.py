@@ -1,8 +1,12 @@
 from wesdk import *
+from bigmodel.xfspark.xfspark import getAnswer as getXunFeiAnswer
+from bigmodel.baidu.ERNIE import getAnswer as getBaiduAnswer
+
 # connect to hook service
 def on_msg(msg):
     logging(msg)
-    bot.send_msg('hello', msg['wxid'])
+    ans = getXunFeiAnswer(msg["content"])
+    bot.send_msg(ans, msg['wxid'])
 
 bot = Bot(ip='127.0.0.1', port=5555)
 bot.register("on_open", lambda ws: logging("hi"))
