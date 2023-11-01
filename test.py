@@ -5,7 +5,7 @@ from bigmodel.baidu.ERNIE import getAnswer as getBaiduAnswer
 # connect to hook service
 def on_msg(msg):
     logging(msg)
-    ans = getXunFeiAnswer(str(msg["content"]))
+    ans = getXunFeiAnswer(str(msg["content"]).replace("@masteryi", ""))
     if msg["roomid"]:
         bot.send_msg(ans, msg['senderid'], msg["roomid"], "总想")
     else:
