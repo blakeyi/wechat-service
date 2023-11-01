@@ -192,6 +192,7 @@ class Bot(threading.Thread):
         self.wshd_recv_txt_msg(msg)
     # wshd_recv_txt_msg 文字消息
     def wshd_recv_txt_msg(self, msg):
+        print("wshd_recv_txt_msg", msg)
         if '@chatroom' in msg['wxid']:
             msg['roomid'] = msg['wxid'] #群id
             msg['senderid'] = msg['id1'] #个人id
@@ -263,6 +264,7 @@ class Bot(threading.Thread):
     def make_on_message(self):
         def on_message(ws, message):
             j=json.loads(message)
+
             if 'content' in j and isinstance(j['content'], str):
                 try:
                     j['content'] = json.loads(j['content'])
