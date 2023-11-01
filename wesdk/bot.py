@@ -204,7 +204,7 @@ class Bot(threading.Thread):
             msg['at_nickname'] = at_match.groups()[0]
             msg['content'] = at_match.groups()[1]
             msg['at_bot'] = msg['at_nickname'] == self.name
-        msg['nickname'] = self.get_chatroom_member_nick(msg['roomid'], msg['senderid'])['content']['nick']
+        # msg['nickname'] = self.get_chatroom_member_nick(msg['roomid'], msg['senderid'])['content']['nick']
 
         if 'recv_txt_msg' in self.handle_register:
             try:
