@@ -206,9 +206,10 @@ class Bot(threading.Thread):
             msg['content'] = at_match.groups()[1]
             msg['at_bot'] = msg['at_nickname'] == self.name
         # msg['nickname'] = self.get_chatroom_member_nick(msg['roomid'], msg['senderid'])['content']['nick']
-
+        print("wshd_recv_txt_msg1", msg)
         if 'recv_txt_msg' in self.handle_register:
             try:
+                print("wshd_recv_txt_msg2", msg)
                 self.handle_register['recv_txt_msg'](msg)
             except:
                 import traceback
