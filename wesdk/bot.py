@@ -119,9 +119,10 @@ class Bot(threading.Thread):
         self.wshd_noimplement(j)
     # wshd_personal_info 登陆账号的信息
     def wshd_personal_info(self, j):
-        print("wshd_personal_info", j)
-        self.name = j['content']['wx_name']
-        self.wxid = j['content']['wx_id']
+        # print("wshd_personal_info", j)
+        # self.name = j['content']['wx_name']
+        self.name = "masteryi"
+        self.wxid = "wxid_xbw9i650pt3y22"
         if 'personal_info' in self.handle_register:
             self.handle_register['personal_info'](j)
             return
@@ -266,7 +267,7 @@ class Bot(threading.Thread):
         return on_close
     def make_on_message(self):
         def on_message(ws, message):
-            print("on_message1", message)
+            # print("on_message1", message)
             if 'content' in j and isinstance(j['content'], str):
                 try:
                     j['content'] = json.loads(j['content'])
@@ -275,7 +276,7 @@ class Bot(threading.Thread):
             resp_type=j['type']
             action={
                 query.PERSONAL_DETAIL:self.wshd_personal_detail,
-                # query.PERSONAL_INFO:self.wshd_personal_info,
+                query.PERSONAL_INFO:self.wshd_personal_info,
                 query.CHATROOM_MEMBER_NICK:self.wshd_chatroom_member_nick,
                 query.AT_MSG:self.wshd_at_msg,
                 query.DEBUG_SWITCH:self.wshd_debug_switch,
