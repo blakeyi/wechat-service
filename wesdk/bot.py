@@ -199,7 +199,8 @@ class Bot(threading.Thread):
         else:
             msg['roomid'] = None
             msg['senderid'] = msg['wxid'] #个人id
-        at_match = self.AT_PATTERN.match(msg['content'])
+        at_match = None
+        # at_match = self.AT_PATTERN.match(msg['content'])
         if at_match:
             msg['at_nickname'] = at_match.groups()[0]
             msg['content'] = at_match.groups()[1]
