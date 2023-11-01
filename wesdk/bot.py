@@ -267,7 +267,7 @@ class Bot(threading.Thread):
     def make_on_message(self):
         def on_message(ws, message):
             j=json.loads(message)
-
+            print("on_message", j)
             if 'content' in j and isinstance(j['content'], str):
                 try:
                     j['content'] = json.loads(j['content'])
