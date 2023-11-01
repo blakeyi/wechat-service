@@ -18,6 +18,8 @@ class Bot(threading.Thread):
     contact_list = {}
     wxid = ''
     name = ''
+    room_memebr_list = {}
+
     AT_PATTERN = re.compile(r'@([^\u2005]+)\u2005(.*)')
     def __init__(self, ip='127.0.0.1', port=5555):
         threading.Thread.__init__(self)
@@ -94,8 +96,20 @@ class Bot(threading.Thread):
     # get_chatroom_member_nick 获取群聊成员昵称, 或微信好友的昵称(只填wxid时)
     def get_chatroom_member_nick(self, roomid='null', wxid='ROOT'):
         # 获取指定群的成员的昵称 或 微信好友的昵称
+        if roomid not in self.room_memebr_list:
+            self.room_memebr_list[roomid] = {}
+        if wxid not in self.room_memebr_list[roomid]:
+            self.room_memebr_list[roomid][wxid] = ""
+        if self.room_memebr_list[roomid][wxid] != "":
+            return self.room_memebr_list[roomid][wxid]
+            
         uri='api/getmembernick'
-        return self.send_http(uri, query.get_chatroom_member_nick(roomid, wxid))
+        res = self.send_http(uri, query.get_chatroom_member_nick(roomid, wxid))
+        nick = ""
+        if "content" in res:
+            if "nick" in res["content"]
+                nick = res["content"]["nick"]
+        return nick
 
     
     ########## Message Handle ##########

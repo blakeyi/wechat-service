@@ -9,7 +9,7 @@ def on_msg(msg):
     if msg["roomid"]:
         nickname = bot.get_chatroom_member_nick(msg["roomid"], msg['senderid'])
         print("nickname", nickname)
-        bot.send_msg(ans, msg['senderid'], msg["roomid"], "总想")
+        bot.send_msg(ans, msg['senderid'], msg["roomid"], nickname)
     else:
         bot.send_msg(ans, msg['wxid'])
 
