@@ -13,3 +13,5 @@ python3 -m pip install -r ./wesdk/requirements.txt
 ```
 
 # 4.坑4 api解析过时, 无法从消息中取出自己的昵称和wxid, 需要注释代码
+
+# 5.坑5 有时候端口8080端口有问题,导致打不开vnc页面, 换个端口就行 -p 8088:8080 ,前面这个是vnc网址端口
