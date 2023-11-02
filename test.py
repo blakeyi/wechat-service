@@ -6,7 +6,7 @@ from bigmodel.baidu.ERNIE import getAnswer as getBaiduAnswer
 def on_msg(msg):
     logging(msg)
     ans = getXunFeiAnswer(str(msg["content"]).replace("@masteryi", ""))
-    if msg["roomid"]:
+    if msg["roomid"] and "@masteryi" in str(msg["content"]):
         nickname = bot.get_chatroom_member_nick(msg["roomid"], msg['senderid'])
         print("nickname", nickname)
         bot.send_msg(ans, msg['senderid'], msg["roomid"], nickname)
